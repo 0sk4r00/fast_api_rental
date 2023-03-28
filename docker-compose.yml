@@ -1,0 +1,18 @@
+version: '3.7'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  postgres:
+    image: 'bitnami/postgresql:15.1.0'
+    ports:
+      - "5436:5432"
+    networks:
+      - app-tier
+    restart: always
+    environment:
+      - POSTGRESQL_USERNAME=psql_user
+      - POSTGRESQL_PASSWORD=psql_password
+      - POSTGRESQL_DATABASE=psql_db
